@@ -19,7 +19,7 @@ int main()
 	font.loadFromFile("D:/Games/C++ games/Ping Pong/Ping Pong/arial.ttf");
 	sf::Text gameovertext("GAME OVER!", font, 30);
 	sf::Text scoring("Score - ", font, 30);
-	float x = 0.1f, y = 0.1f;
+	float x = 5.f, y = 5.f;
 	sf::Vector2f velocity(x, y);
 	enum cases
 	{
@@ -73,26 +73,26 @@ int main()
 		{
 			case UPPERBOUND :
 			{
-				y = 0.1f;
+				y = 5.f;
 				velocity = sf::Vector2f(x, y);
 				break;
 			}
 			case LOWERBOUND :
 			{
-				y = -0.1f;
+				y = -5.f;
 				velocity = sf::Vector2f(x, y);
 				break;
 			}
 			case LEFTBOUND :
 			{
-				x = 0.1f;
+				x = 5.f;
 				velocity = sf::Vector2f(x, y);
 				score++;
 				break;
 			}
 			case RIGHTBOUND :
 			{
-				x = -0.1f;
+				x = -5.f;
 				velocity = sf::Vector2f(x, y);
 				break;
 			}
@@ -131,11 +131,11 @@ int main()
 		}
 		if (velocity.y < 0 && player2.getPosition().y >= 10)
 		{
-			player2.move(0.f, -0.1f);
+			player2.move(0.f, -5.f);
 		}
 		if (velocity.y > 0 && player2.getPosition().y <= 490)
 		{
-			player2.move(0.f, 0.1f);
+			player2.move(0.f, 5.f);
 		}
 		window.display();
 		window.clear();
@@ -145,7 +145,9 @@ int main()
 		window.draw(scoring);
 		window.draw(s);
 	}
-	cout << score << endl;
+	scoring.setString("Score - " + score);
+	string temp = scoring.getString();
+	cout << temp;
 	return 0;
 }
 
